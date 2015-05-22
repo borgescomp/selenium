@@ -27,7 +27,6 @@ public class SiteCalculoExtatoTest {
 	     Select select2 = new Select(driver.findElement(By.id("comboConv2")));
 	     select2.selectByVisibleText("milha(s)");
 	     
-	     
 	     driver.findElement(By.id("btnContinuar")).click();
 	     Assert.assertEquals("100 quilômetro(s) = 62,1371 milha(s)", driver.findElement(By.xpath("//span[@id='lblMsg']")).getText());
 	     
