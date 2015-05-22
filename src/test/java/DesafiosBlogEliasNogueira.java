@@ -1,4 +1,5 @@
 import junit.framework.Assert;
+
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,15 +7,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
-
 public class DesafiosBlogEliasNogueira {
-	//@Test
+	private String baseURL = null;
+	WebDriver driver = new FirefoxDriver();
+	
+	@Test
 	public void somaComNumerosAleatorios(){
-		 String baseURL = "http://eliasnogueira.com/arquivos_blog/selenium/desafio/1desafio/";
+		 baseURL = "http://eliasnogueira.com/arquivos_blog/selenium/desafio/1desafio/";
 		 String valor1, valor2;
 		 int resultado;
-		 WebDriver driver = new FirefoxDriver();
 		 driver.get(baseURL);
 		 
 		 valor1 = driver.findElement(By.id("number1")).getText();
@@ -24,11 +25,11 @@ public class DesafiosBlogEliasNogueira {
 		 driver.findElement(By.name("submit")).click();
 		 Assert.assertEquals(true,  driver.findElement(By.id("resultado")).isDisplayed());
 		 Assert.assertEquals("CORRETO", driver.findElement(By.id("resultado")).getText());
+		 edicaoInline();
 	}
-	@Test
+	
 	public void edicaoInline(){
-		 String baseURL = "http://eliasnogueira.com/arquivos_blog/selenium/desafio/2desafio/";
-		 WebDriver driver = new FirefoxDriver();
+		 baseURL = "http://eliasnogueira.com/arquivos_blog/selenium/desafio/2desafio/";
 		 WebDriverWait wait = new WebDriverWait(driver, 10);
 		 driver.get(baseURL);
 		 
