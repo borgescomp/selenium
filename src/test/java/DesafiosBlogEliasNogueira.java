@@ -4,14 +4,17 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.WebElement;
 
 public class DesafiosBlogEliasNogueira {
 	private String baseURL = null;
 	WebDriver driver = new FirefoxDriver();
 	
-	@Test
+	//@Test
 	public void somaComNumerosAleatorios(){
 		 baseURL = "http://eliasnogueira.com/arquivos_blog/selenium/desafio/1desafio/";
 		 String valor1, valor2;
@@ -54,6 +57,20 @@ public class DesafiosBlogEliasNogueira {
 		 Assert.assertEquals("Nome alterado",  driver.findElement(By.id("name_rg_display_section")).getText());
 		 Assert.assertEquals("Email: alterado@email.com",  driver.findElement(By.id("email_rg_display_section")).getText());
 		 Assert.assertEquals("Telefone: 11 9999-9999",  driver.findElement(By.id("phone_rg_display_section")).getText());
+	}
+	@Test
+	public void carrinhoDeComprasAjax(){
+		Actions action = new Actions(driver);
+		Action dragAndDrop = null;
+		driver.get("http://eliasnogueira.com/arquivos_blog/selenium/desafio/3desafio/drag_and_drop/demo.php");
+		driver.manage().window().maximize();
+		WebElement ipod = driver.findElement(By.xpath("//div[@class='content drag-desired']/div[1]"));
+		WebElement carrinho = driver.findElement(By.xpath("//div[@class='content drop-here ui-droppable']"));
+		
+		
+		dragAndDrop = action.clickAndHold(ipod).moveToElement(carrinho).release().build();
+		dragAndDrop.perform();
+		//(new Actions(driver)).dragAndDrop(element, target).perform();
 	}
 	
 }
