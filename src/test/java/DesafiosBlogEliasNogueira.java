@@ -3,6 +3,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
@@ -13,6 +14,8 @@ import org.openqa.selenium.WebElement;
 public class DesafiosBlogEliasNogueira {
 	private String baseURL = null;
 	WebDriver driver = new FirefoxDriver();
+	//System.setProperty("webdriver.chrome.driver", "C:\\workspace\\chromedriver.exe");
+	//WebDriver driver = new ChromeDriver();
 	
 	//@Test
 	public void somaComNumerosAleatorios(){
@@ -64,13 +67,18 @@ public class DesafiosBlogEliasNogueira {
 		Action dragAndDrop = null;
 		driver.get("http://eliasnogueira.com/arquivos_blog/selenium/desafio/3desafio/drag_and_drop/demo.php");
 		driver.manage().window().maximize();
-		WebElement ipod = driver.findElement(By.xpath("//div[@class='content drag-desired']/div[1]"));
-		WebElement carrinho = driver.findElement(By.xpath("//div[@class='content drop-here ui-droppable']"));
+		WebElement iphone = driver.findElement(By.xpath("//div[@class='content drag-desired']/div[3]"));
+		WebElement ipodSuffle = driver.findElement(By.xpath("//div[@class='content drag-desired']/div[4]"));
+		WebElement appleTv = driver.findElement(By.xpath("//div[@class='content drag-desired']/div[6]"));
+		WebElement carrinho = driver.findElement(By.id("cart-icon"));
 		
-		
-		dragAndDrop = action.clickAndHold(ipod).moveToElement(carrinho).release().build();
+		dragAndDrop = action.clickAndHold(iphone).moveToElement(carrinho).release().build();
 		dragAndDrop.perform();
-		//(new Actions(driver)).dragAndDrop(element, target).perform();
+		dragAndDrop = action.clickAndHold(ipodSuffle).moveToElement(carrinho).release().build();
+		dragAndDrop.perform();
+		dragAndDrop = action.clickAndHold(appleTv).moveToElement(carrinho).release().build();
+		dragAndDrop.perform();
+
 	}
 	
 }
