@@ -1,9 +1,13 @@
 import junit.framework.Assert;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
@@ -13,9 +17,17 @@ import org.openqa.selenium.WebElement;
 
 public class DesafiosBlogEliasNogueira {
 	private String baseURL = null;
-	WebDriver driver = new FirefoxDriver();
-	//System.setProperty("webdriver.chrome.driver", "C:\\workspace\\chromedriver.exe");
-	//WebDriver driver = new ChromeDriver();
+	@BeforeClass
+	public static void setup(){
+		System.setProperty("webdriver.chrome.driver", "./resouce/chromedriver.exe");
+	}
+	@After
+	public void close(){
+		driver.close();
+	}
+//	WebDriver driver = new FirefoxDriver();
+	
+	WebDriver driver = new ChromeDriver();
 	
 	//@Test
 	public void somaComNumerosAleatorios(){
@@ -32,6 +44,7 @@ public class DesafiosBlogEliasNogueira {
 		 Assert.assertEquals(true,  driver.findElement(By.id("resultado")).isDisplayed());
 		 Assert.assertEquals("CORRETO", driver.findElement(By.id("resultado")).getText());
 		 edicaoInline();
+		 
 	}
 	
 	public void edicaoInline(){
@@ -78,6 +91,7 @@ public class DesafiosBlogEliasNogueira {
 		dragAndDrop.perform();
 		dragAndDrop = action.clickAndHold(appleTv).moveToElement(carrinho).release().build();
 		dragAndDrop.perform();
+		
 
 	}
 	
