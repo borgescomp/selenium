@@ -29,7 +29,7 @@ public class DesafiosBlogEliasNogueira {
 	
 	WebDriver driver = new ChromeDriver();
 	
-	//@Test
+	@Test
 	public void somaComNumerosAleatorios(){
 		 baseURL = "http://eliasnogueira.com/arquivos_blog/selenium/desafio/1desafio/";
 		 String valor1, valor2;
@@ -73,8 +73,9 @@ public class DesafiosBlogEliasNogueira {
 		 Assert.assertEquals("Nome alterado",  driver.findElement(By.id("name_rg_display_section")).getText());
 		 Assert.assertEquals("Email: alterado@email.com",  driver.findElement(By.id("email_rg_display_section")).getText());
 		 Assert.assertEquals("Telefone: 11 9999-9999",  driver.findElement(By.id("phone_rg_display_section")).getText());
+		 carrinhoDeComprasAjax();
 	}
-	@Test
+	//@Test
 	public void carrinhoDeComprasAjax(){
 		Actions action = new Actions(driver);
 		Action dragAndDrop = null;
@@ -94,5 +95,10 @@ public class DesafiosBlogEliasNogueira {
 		
 
 	}
-	
+	public void autoPreenchimentoDeCampos(){
+		driver.get("http://eliasnogueira.com/arquivos_blog/selenium/desafio/4desafio/");
+		driver.findElement(By.id("cep")).sendKeys("05424060");
+		driver.findElement(By.id("cep"));
+		//incompleto devido ao desafio estar com bug
+	}
 }
