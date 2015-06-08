@@ -1,10 +1,11 @@
 import junit.framework.Assert;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,9 +14,14 @@ import org.openqa.selenium.WebElement;
 
 public class DesafiosBlogEliasNogueira {
 	private String baseURL = null;
-	WebDriver driver = new FirefoxDriver();
+	//WebDriver driver = new FirefoxDriver();
 	//System.setProperty("webdriver.chrome.driver", "C:\\workspace\\chromedriver.exe");
-	//WebDriver driver = new ChromeDriver();
+	WebDriver driver = new ChromeDriver();
+	
+	 @BeforeClass
+	 public static void setup(){
+	  System.setProperty("webdriver.chrome.driver", "C:\\workspace\\chromedriver.exe");
+	 }
 	
 	@Test
 	public void somaComNumerosAleatorios(){
